@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<srpproject>
+    <option>
+        <name>Test_lib</name>
+        <output></output>
+        <start>libTest.so</start>
+        <script></script>
+    </option>
+    <exec>
+        <file name="files/libTest.so" ostype="android" start="true" />
+    </exec>
+    <depend />
+    <static />
+    <dyna />
+</srpproject>

@@ -1,0 +1,3 @@
+INDEX VERSION 1.126+D:\Work\starcore\core\android\workspace\examples\comm.basic\remotecall.service\.metadata\.plugins\org.eclipse.jdt.core
+4026652889.index
+3835146966.index

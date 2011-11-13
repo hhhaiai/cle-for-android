@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<srpproject>
+    <option>
+        <name>Test_lua</name>
+        <output></output>
+        <start>Test.lua</start>
+        <script>lua</script>
+    </option>
+    <exec>
+        <file name="files/Test.lua" start="true" />
+    </exec>
+    <depend />
+    <static />
+    <dyna />
+</srpproject>

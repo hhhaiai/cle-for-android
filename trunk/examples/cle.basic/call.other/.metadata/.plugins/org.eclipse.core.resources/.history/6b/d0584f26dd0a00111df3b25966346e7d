@@ -1,0 +1,22 @@
+package com.srplab.examples;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+import com.srplab.www.starcore.*;
+
+public class Java_callActivity extends Activity {
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        
+		StarCoreFactory starcore= StarCoreFactory.GetFactory();
+//		StarServiceClass Service=starcore._InitSimple("test","123",0,0,"files/AddFunction.lua?script=lua");
+//		StarServiceClass Service=starcore._InitSimple("test","123",0,0,"files/AddFunction.py?script=python");
+		//StarServiceClass Service=starcore._InitSimple("test","123",0,0,"files/AddFunction.dll");
+		StarObjectClass a = Service._GetObject("TestClass")._New();
+        System.out.println(a._Call("Add",12,34));        
+    }
+}

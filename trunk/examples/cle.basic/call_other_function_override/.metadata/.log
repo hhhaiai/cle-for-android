@@ -1,0 +1,13 @@
+!SESSION 2011-11-09 22:33:30.320 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_25
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -data D:\Work\starcore\core\android\workspace\examples\cle.basic\call_other_function_override -product org.eclipse.epp.package.jee.product
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2011-11-09 22:36:07.304
+!MESSAGE Failed to load properties file for project 'java_call'
+
+!ENTRY org.eclipse.ui 4 4 2011-11-09 22:41:24.507
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.ProblemView.

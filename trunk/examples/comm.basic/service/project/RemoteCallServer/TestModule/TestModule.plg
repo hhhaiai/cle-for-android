@@ -1,0 +1,29 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TestModule - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\lhm\LOCALS~1\Temp\RSP5BB.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"Debug/TestModule.pdb" /debug /machine:I386 /out:"../../../../RemoteCallServer/TestModule.dll" /implib:"Debug/TestModule.lib" /pdbtype:sept 
+.\Debug\RemoteCallServer_UUIDDef.obj
+.\Debug\TestModule_TestClass_VSBody.obj
+.\Debug\TestModule_TestClass_VSRegSkeleton.obj
+.\Debug\TestModule_VSMain.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\lhm\LOCALS~1\Temp\RSP5BB.tmp"
+<h3>Output Window</h3>
+Linking...
+LINK : warning LNK4075: ignoring /EDITANDCONTINUE due to /INCREMENTAL:NO specification
+   Creating library Debug/TestModule.lib and object Debug/TestModule.exp
+
+
+
+<h3>Results</h3>
+TestModule.dll - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

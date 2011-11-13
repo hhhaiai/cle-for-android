@@ -1,0 +1,49 @@
+package com.srplab.examples;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import java.util.Timer;  
+import java.util.TimerTask; 
+import android.os.Handler;  
+import android.os.Message;
+
+import com.srplab.www.starcore.*;
+
+public class Test_clientActivity extends Activity {
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        
+		StarCoreFactory starcore= StarCoreFactory.GetFactory();
+		starcore._InitCore(true,true,false,true,"",0,"",0);
+        StarSrvGroupClass SrvGroup = starcore._CreateSrvGroup(1,starcore._Getint("VS_CLIENT_USER"));
+        
+        int ret = SrvGroup._SConnect("","10.0.2.2",3008,"","",null);
+        if(ret == 0 ){
+            System.out.println( "Fail To Connect..." );
+   	        SrvGroup._ClearService();
+            starcore._ModuleExit();
+            return;
+        }
+        SrvGroup._WaitServiceSync(0);
+        System.out.println( "Success To Connect..." );
+
+        StarServiceClass Service = SrvGroup._GetService("","");
+        Service._ActiveSysRootItem("TestItem");
+        StarServiceItemClass SrvItem = Service._GetSysRootItem("TestItem");
+        SrvItem._WaitSync();
+
+        StarObjectClass b = Service._GetObject("ParaObject")._New();
+        b._Set("Para1",123);
+        b._Set("Para2","1E2929C6-7DDA-468f-BBAD-E303A1B3C826");
+        b._Set("Para3",456.0);
+        b._Set("Para4",new Object[]{123,456.0});
+        b._Set("Para5","client request");
+    
+        Object[] RetResult = Service._GetObject("TestObject")._SRemoteCall(0,0,"GetRemoteObject",b);
+        System.out.println( RetResult[1] );     
+    }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<srpproject>
+    <option>
+        <name>Test_py</name>
+        <output></output>
+        <start>Test.py</start>
+        <script>python</script>
+    </option>
+    <exec>
+        <file name="files/Test.py" start="true" />
+    </exec>
+    <depend />
+    <static />
+    <dyna />
+</srpproject>
