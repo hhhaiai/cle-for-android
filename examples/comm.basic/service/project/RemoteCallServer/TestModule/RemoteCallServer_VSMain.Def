@@ -1,0 +1,14 @@
+;--------------------------------------------------
+;VirtualSociety System ServiceModuleTemplate Define File
+;CreateBy SRPLab                
+;CreateDate: 2011-11-8  
+;--------------------------------------------------
+
+LIBRARY TestModule.DLL
+EXPORTS
+    VSModuleFunction_GetVersion                   =  _VSModuleFunction_GetVersion
+    VSModuleFunction_GetModuleInfo                =  _VSModuleFunction_GetModuleInfo
+    VSModuleFunction_ModuleInit                   =  _VSModuleFunction_ModuleInit
+    VSModuleFunction_SetModuleHandle              =  _VSModuleFunction_SetModuleHandle
+    VSModuleFunction_ModuleTerm                   =  _VSModuleFunction_ModuleTerm
+    VSModuleFunction_RequestRegisterObject        =  _VSModuleFunction_RequestRegisterObject

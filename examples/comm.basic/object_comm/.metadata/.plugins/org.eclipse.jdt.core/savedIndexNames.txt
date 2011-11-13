@@ -1,0 +1,3 @@
+INDEX VERSION 1.126+D:\Work\starcore\core\android\workspace\examples\comm.basic\object_comm\.metadata\.plugins\org.eclipse.jdt.core
+2042520437.index
+3835146966.index

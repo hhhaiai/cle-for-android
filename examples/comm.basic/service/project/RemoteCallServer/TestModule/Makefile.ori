@@ -1,0 +1,78 @@
+#****************************************************************************
+# Makefile for TestModule.
+# www.srplab.com
+#****************************************************************************
+DEBUG          := NO
+PROFILE        := NO
+#****************************************************************************
+CC     := gcc
+CXX    := g++
+LD     := g++
+
+DEBUG_CFLAGS     := -Wall -Wno-format -g -DDEBUG -DENV_LINUX
+RELEASE_CFLAGS   := -Wall -Wno-unknown-pragmas -Wno-format -O3 -DENV_LINUX
+
+LIBS	:= -ldl -lpthread -lrt
+EXTRA_LIBS := /usr/lib/libstarlib.a /usr/lib/libuuid.a
+
+DEBUG_CXXFLAGS   := ${DEBUG_CFLAGS}
+RELEASE_CXXFLAGS := ${RELEASE_CFLAGS}
+
+DEBUG_LDFLAGS    := -g
+RELEASE_LDFLAGS  :=
+
+ifeq (YES, ${DEBUG})
+   CFLAGS       := ${DEBUG_CFLAGS}
+   CXXFLAGS     := ${DEBUG_CXXFLAGS}
+   LDFLAGS      := ${DEBUG_LDFLAGS}
+else
+   CFLAGS       := ${RELEASE_CFLAGS}
+   CXXFLAGS     := ${RELEASE_CXXFLAGS}
+   LDFLAGS      := ${RELEASE_LDFLAGS}
+endif
+
+ifeq (YES, ${PROFILE})
+   CFLAGS   := ${CFLAGS} -pg -O3
+   CXXFLAGS := ${CXXFLAGS} -pg -O3
+   LDFLAGS  := ${LDFLAGS} -pg
+endif
+
+#****************************************************************************
+# Makefile code common to all platforms
+#****************************************************************************
+CFLAGS   := ${CFLAGS}   ${DEFS}
+CXXFLAGS := ${CXXFLAGS} ${DEFS}
+#****************************************************************************
+# include source and paths
+#****************************************************************************
+INCS := -I/usr/include/starcore -I../
+MODULE_CXXSRCS := $(wildcard ./*.cpp)
+MODULE_CSRCS += $(wildcard ./*.c)
+#****************************************************************************
+MODULE_CXXOBJS:= $(MODULE_CXXSRCS:%.cpp=%.o)
+MODULE_COBJS  := $(MODULE_CSRCS:%.c=%.o)
+#****************************************************************************
+CXXOBJS := ${MODULE_CXXOBJS}
+COBJS := ${MODULE_COBJS}
+SHARELIB_MODULE_OBJS := ${MODULE_CXXOBJS} ${MODULE_COBJS}
+#****************************************************************************
+# Targets of the build
+#****************************************************************************
+OBJS_PATH = .
+SHARELIB_MODULE := ${OBJS_PATH}/TestModule.so
+all: ${SHARELIB_MODULE}
+#****************************************************************************
+# Output
+#****************************************************************************
+${SHARELIB_MODULE}: ${SHARELIB_MODULE_OBJS}
+	${LD} -shared -o $@ ${LDFLAGS} ${SHARELIB_MODULE_OBJS} ${LIBS} ${EXTRA_LIBS}
+#****************************************************************************
+# common rules
+#****************************************************************************
+${CXXOBJS} :
+	${CXX} -fPIC ${CXXFLAGS} ${INCS} $< -o $@ -c $*.cpp
+${COBJS} :
+	${CC} -fPIC ${CFLAGS} ${INCS} -o $@ -c $*.c
+clean:
+	-rm -f core ${CXXOBJS} ${COBJS} ${SHARELIB_MODULE}
+

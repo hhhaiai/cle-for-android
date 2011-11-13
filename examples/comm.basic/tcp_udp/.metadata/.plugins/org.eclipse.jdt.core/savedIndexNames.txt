@@ -1,0 +1,5 @@
+INDEX VERSION 1.126+D:\Work\starcore\core\android\workspace\examples\comm.basic\tcp_udp\.metadata\.plugins\org.eclipse.jdt.core
+2851111445.index
+886657974.index
+694636268.index
+3025051471.index
