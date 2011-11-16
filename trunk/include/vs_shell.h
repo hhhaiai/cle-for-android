@@ -180,6 +180,8 @@ part 4 : string functions
 #endif
 
 VS_CHAR *vs_string_stristr( const VS_CHAR *string, const VS_CHAR *strCharSet );
+void vs_memcpy(void *DesBuf,void *SrcBuf,VS_INT32 Size);
+void vs_memset(void *DesBuf,VS_INT8 c,VS_INT32 Size);
 
 /*--------------------------------------------------------------------
 part 5 : thread functions
