@@ -11,25 +11,10 @@ import java.util.Hashtable;
 
 import com.srplab.www.starcore.*;
 
-class MyStarCallBackClass extends StarCallBackClass{  	
-  	public Object[] CallBack( int ServiceGroupID, int uMes, Object wParam, Object lParam )
-  	{
-  		if( uMes == _Getint("MSG_VSDISPMSG") || uMes == _Getint("MSG_VSDISPLUAMSG") ){
-  		    Log.d("starcore",(String)wParam);
-  		}
-  		if( uMes == _Getint("MSG_DISPMSG") || uMes == _Getint("MSG_DISPLUAMSG") ){
-  			Log.d("starcore",(String)wParam);
-  		}
-  		return null;
-  	}
-  	MyStarCallBackClass(StarCoreFactory starcore){super(starcore);starcore._RegMsgCallBack(this,"CallBack");}
-}	
-
 public class Test_serverActivity extends Activity {
     /** Called when the activity is first created. */
 	StarCoreFactory starcore;
 	StarSrvGroupClass SrvGroup;
-	MyStarCallBackClass CallBack;
 	
 	Timer timer;  
 	
@@ -40,7 +25,6 @@ public class Test_serverActivity extends Activity {
         
 		starcore= StarCoreFactory.GetFactory();
 		StarServiceClass Service=starcore._InitSimple("RemoteCallServer","123",3008,0);
-		CallBack = new MyStarCallBackClass(starcore);		
 		SrvGroup = (StarSrvGroupClass)Service._Get("_ServiceGroup");
 
         System.out.println( Service );
