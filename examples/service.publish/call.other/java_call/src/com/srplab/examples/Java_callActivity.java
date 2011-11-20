@@ -5,20 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import com.srplab.www.starcore.*;
 
-class MyStarCallBackClass extends StarCallBackClass{  	
-  	public Object[] CallBack( int ServiceGroupID, int uMes, Object wParam, Object lParam )
-  	{
-  		if( uMes == _Getint("MSG_VSDISPMSG") || uMes == _Getint("MSG_VSDISPLUAMSG") ){
-  		    Log.d("starcore",(String)wParam);
-  		}
-  		if( uMes == _Getint("MSG_DISPMSG") || uMes == _Getint("MSG_DISPLUAMSG") ){
-  			Log.d("starcore",(String)wParam);
-  		}
-  		return null;
-  	}
-  	MyStarCallBackClass(StarCoreFactory starcore){super(starcore);starcore._RegMsgCallBack(this,"CallBack");}
-}
-
 public class Java_callActivity extends Activity {
     /** Called when the activity is first created. */
     @Override
@@ -28,7 +14,6 @@ public class Java_callActivity extends Activity {
         
 		StarCoreFactory starcore= StarCoreFactory.GetFactory();
 		starcore._InitCore(true,true,false,true,"",0,"",0);
-		MyStarCallBackClass CallBack = new MyStarCallBackClass(starcore);
 		StarServiceClass Service=starcore._InitSimple("test","123",0,0,"http://10.0.2.2/Test_lua.srb.bin");
 //		StarServiceClass Service=starcore._InitSimple("test","123",0,0,"http://10.0.2.2/Test_py.srb.bin");
 //		StarServiceClass Service=starcore._InitSimple("test","123",0,0,"http://10.0.2.2/Test_lib.srb.bin");

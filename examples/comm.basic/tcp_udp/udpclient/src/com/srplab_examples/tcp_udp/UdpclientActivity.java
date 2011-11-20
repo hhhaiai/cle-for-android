@@ -10,20 +10,6 @@ import android.os.Message;
 
 import com.srplab.www.starcore.*;
 
-class MyStarCallBackClass extends StarCallBackClass{  	
-  	public Object[] CallBack( int ServiceGroupID, int uMes, Object wParam, Object lParam )
-  	{
-  		if( uMes == _Getint("MSG_VSDISPMSG") || uMes == _Getint("MSG_VSDISPLUAMSG") ){
-  		    Log.d("starcore",(String)wParam);
-  		}
-  		if( uMes == _Getint("MSG_DISPMSG") || uMes == _Getint("MSG_DISPLUAMSG") ){
-  			Log.d("starcore",(String)wParam);
-  		}
-  		return null;
-  	}
-  	MyStarCallBackClass(StarCoreFactory starcore){super(starcore);starcore._RegMsgCallBack(this,"CallBack");}
-}	
-
 class UDPClient_CommInterface extends StarCommInterfaceClass{
 	private StarBinBufClass BinBuf,BinBuf_IP;	
 	private StarSrvGroupClass SrvGroup;
@@ -67,7 +53,6 @@ public class UdpclientActivity extends Activity {
         
 		starcore= StarCoreFactory.GetFactory();
 		StarServiceClass Service=starcore._InitSimple("test","123",0,0);
-		MyStarCallBackClass CallBack = new MyStarCallBackClass(starcore);		
 		StarSrvGroupClass SrvGroup = (StarSrvGroupClass)Service._Get("_ServiceGroup");
 
 		UDPClient_CommInterface CommInterface = new UDPClient_CommInterface(SrvGroup,SrvGroup._NewCommInterface());    	

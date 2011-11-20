@@ -10,20 +10,6 @@ import android.os.Message;
 
 import com.srplab.www.starcore.*;
 
-class MyStarCallBackClass extends StarCallBackClass{  	
-  	public Object[] CallBack( int ServiceGroupID, int uMes, Object wParam, Object lParam )
-  	{
-  		if( uMes == _Getint("MSG_VSDISPMSG") || uMes == _Getint("MSG_VSDISPLUAMSG") ){
-  		    Log.d("starcore",(String)wParam);
-  		}
-  		if( uMes == _Getint("MSG_DISPMSG") || uMes == _Getint("MSG_DISPLUAMSG") ){
-  			Log.d("starcore",(String)wParam);
-  		}
-  		return null;
-  	}
-  	MyStarCallBackClass(StarCoreFactory starcore){super(starcore);starcore._RegMsgCallBack(this,"CallBack");}
-}
-
 public class Test_server_deferActivity extends Activity {
     /** Called when the activity is first created. */
     StarObjectClass a;
@@ -38,7 +24,6 @@ public class Test_server_deferActivity extends Activity {
         
 		starcore= StarCoreFactory.GetFactory();
 		Service=starcore._InitSimple("WebServiceCallServer","123",0,0);
-		MyStarCallBackClass CallBack = new MyStarCallBackClass(starcore);		
 		StarSrvGroupClass SrvGroup = (StarSrvGroupClass)Service._Get("_ServiceGroup");
 		SrvGroup._SetWebServerPort(null,3008,100,100);
 
